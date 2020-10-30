@@ -32,11 +32,12 @@
               </li>
             </ul>
             
-            <div v-for="element in variants" :key="element.id">
+            <div v-for="element in variants" :key="element.id" 
+              @mouseover="switchImage(element.image)">
               {{ element.color }}
             </div>
 
-            <button class="button" v-on:click="addToCard">Add to Cart</button>
+            <button class="button" @click="addToCard">Add to Cart</button>
 
             <!-- optional stuff -->
 
