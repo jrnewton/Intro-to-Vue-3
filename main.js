@@ -19,8 +19,14 @@ const optionsObject = {
     }
   }, 
   methods: { 
-    addToCard: function() { 
+    addToCart: function() { 
       this.cart += 1;
+    }, 
+
+    removeFromCart: function() { 
+      if (this.cart > 0) { 
+        this.cart -= 1;
+      }
     }, 
 
     switchImage(image) { 
