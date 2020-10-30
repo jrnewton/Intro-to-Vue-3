@@ -3,7 +3,8 @@
 const optionsObject = { 
   data: function() {
     return {
-      product: 'Socks'
+      product: 'Boots', 
+      description: 'Steel toe and comfort sole'
     }
   }
 };
