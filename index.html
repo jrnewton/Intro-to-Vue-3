@@ -40,11 +40,19 @@
             </button>
 
             <div class="collapse" id="details">
+              <label>Product Description</label>
               <p class="product-description">{{ description }}</p>
 
-              <p><a :href="url">Learn more</a></p>
+              <label>Sizes</label>
+              <ul>
+                <li v-for="element in sizes">
+                  {{ element }}
+                </li>
+              </ul>
               
               <p v-if="onSale" class="font-style: bold">On Sale!!!</p>
+
+              <p><a :href="url">Even more details</a></p>
             </div>
             
           </div>
