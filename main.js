@@ -8,7 +8,7 @@ const optionsObject = {
       description: 'Soft and cool', 
       image: './assets/images/socks_green.jpg', 
       url: 'https://www.vuejs.org',
-      inventory: 100,
+      inventory: 15,
       onSale: false,
       details: ['50% cotton', '30% wool', '20% poly-blend'],
       variants: [
@@ -19,12 +19,29 @@ const optionsObject = {
     }
   }, 
   methods: { 
+    // inStock: function() { 
+    //   return (this.inventory > 0);
+    // },
+
+    // inventoryStyle: function() { 
+    //   if (this.inStock()) { 
+    //     return [ 'button' ];
+    //   }
+    //   else { 
+    //     return [ 'button', 'disabledButton' ];
+    //   }
+    // }, 
+
     addToCart: function() { 
-      this.cart += 1;
+      if (this.inventory > 0) { 
+        this.inventory -= 1;
+        this.cart += 1;
+      }
     }, 
 
     removeFromCart: function() { 
-      if (this.cart > 0) { 
+      if (this.cart > 0) {
+        this.inventory += 1; 
         this.cart -= 1;
       }
     }, 

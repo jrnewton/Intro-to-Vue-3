@@ -16,14 +16,16 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <img :src="image" :title="product + '! ' + description">
+            <img 
+              :src="image" 
+              :title="product + '! ' + description">
           </div>
 
           <div class="product-info">
             <h1>{{ product + '!' }}</h1>
             
-            <p v-if="inventory > 10">In stock</p>
-            <p v-else-if="inventory > 0 && inventory <= 10">Almost out of stock</p>
+            <p v-if="inventory >= 10">In stock</p>
+            <p v-else-if="inventory > 0 && inventory < 10">Almost out of stock</p>
             <p v-else>Out of stock</p>
 
             <ul>
@@ -32,14 +34,27 @@
               </li>
             </ul>
             
-            <div v-for="element in variants" :key="element.id" 
-              @mouseover="switchImage(element.image)">
-              {{ element.color }}
+            <div 
+              v-for="element in variants" 
+              :key="element.id" 
+              @mouseover="switchImage(element.image)"
+              class="color-circle"
+              :style="{ 'backgroundColor': element.color }"
+              :title="'Show color ' + element.color">
             </div>
 
             <div class="btn-group">
-              <button class="button" @click="addToCart">Add to Cart</button>
-              <button class="button" @click="removeFromCart">Remove from Cart</button>
+              <button 
+                class="button" 
+                :class="{ disabledButton: inventory <= 0}"
+                :disabled="inventory <= 0"
+                @click="addToCart">Add to Cart</button>
+
+              <button 
+                class="button"
+                :class="{ disabledButton: cart <= 0 }"
+                :disabled="cart <= 0"
+                @click="removeFromCart">Remove from Cart</button>
             </div>
 
             <!-- optional stuff -->
@@ -64,11 +79,13 @@
 
               <p><a :href="url">Even more details</a></p>
             </div>
-            
+
           </div>
         </div>
       </div>
       
+      <div class="cart">Inventory: {{ inventory }}</div>
+
     </div>
 
     <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
