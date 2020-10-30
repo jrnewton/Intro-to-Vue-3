@@ -16,7 +16,7 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <!-- you must quote the :class because it's not camelCase -->
+            <!-- you must quote the :class values because it's not camelCase -->
             <img 
               :src="image" 
               :title="title + ' ' + description"
@@ -60,9 +60,8 @@
                 @click="removeFromCart">Remove from Cart</button>
             </div>
 
-            <!-- optional stuff -->
+            <!-- optional stuff 
 
-            <!-- Use vue css button not bootstrap: btn btn-primary -->
             <button class="button mt-3" type="button" data-toggle="collapse" data-target="#details" aria-expanded="false" aria-controls="details">
               More Details
             </button>
@@ -82,6 +81,7 @@
 
               <p><a :href="url">Even more details</a></p>
             </div>
+            -->
 
           </div>
         </div>
