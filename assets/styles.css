@@ -113,6 +113,10 @@ p {
   width: 50%;
 }
 
+.product-description { 
+  font-style: italic
+}
+
 .review-form {
   display: flex;
   flex-direction: column;

@@ -6,7 +6,9 @@ const optionsObject = {
       product: 'Socks', 
       description: 'Soft and cool', 
       image: './assets/images/socks_green.jpg', 
-      url: 'https://www.vuejs.org'
+      url: 'https://www.vuejs.org',
+      inventory: 100,
+      onSale: true
     }
   }
 };
