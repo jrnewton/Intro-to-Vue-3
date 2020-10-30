@@ -5,7 +5,8 @@ const optionsObject = {
     return {
       product: 'Socks', 
       description: 'Soft and cool', 
-      image: './assets/images/socks_green.jpg'
+      image: './assets/images/socks_green.jpg', 
+      url: 'https://www.vuejs.org'
     }
   }
 };
