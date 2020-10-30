@@ -19,13 +19,13 @@
             <!-- you must quote the :class because it's not camelCase -->
             <img 
               :src="image" 
-              :title="product + '! ' + description"
+              :title="title + ' ' + description"
               :class="{ 'out-of-stock-img': inventory <= 0 }"
               >
           </div>
 
           <div class="product-info">
-            <h1>{{ product + '!' }}</h1>
+            <h1>{{ title }}</h1>
             
             <p v-if="inventory >= 10">In stock</p>
             <p v-else-if="inventory > 0 && inventory < 10">Almost out of stock</p>

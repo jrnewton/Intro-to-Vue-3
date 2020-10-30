@@ -11,9 +11,10 @@ const optionsObject = {
       inventory: 15,
       onSale: false,
       details: ['50% cotton', '30% wool', '20% poly-blend'],
+      brand: 'Vue Mastery',
       variants: [
-        { id: 2234, color: 'green', image: './assets/images/socks_green.jpg' },
-        { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg'  }
+        { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
+        { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0  }
       ], 
       sizes: [ 8, 9, 10, 11 ]
     }
@@ -48,6 +49,11 @@ const optionsObject = {
 
     switchImage(image) { 
       this.image = image;
+    }
+  }, 
+  computed: {
+    title: function() { 
+      return this.brand + ' ' + this.product + '!';
     }
   }
 };
