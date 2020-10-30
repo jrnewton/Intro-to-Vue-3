@@ -3,8 +3,9 @@
 const optionsObject = { 
   data: function() {
     return {
-      product: 'Boots', 
-      description: 'Steel toe and comfort sole'
+      product: 'Socks', 
+      description: 'Soft and cool', 
+      image: './assets/images/socks_green.jpg'
     }
   }
 };
