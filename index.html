@@ -20,16 +20,17 @@
             <img 
               :src="image" 
               :title="title + ' ' + description"
-              :class="{ 'out-of-stock-img': inventory <= 0 }"
-              >
+              :class="{ 'out-of-stock-img': noStock }"
+              />
+            <div class="cart">Quantity: {{ currentQuantity }}</div>
           </div>
 
           <div class="product-info">
             <h1>{{ title }}</h1>
             
-            <p v-if="inventory >= 10">In stock</p>
-            <p v-else-if="inventory > 0 && inventory < 10">Almost out of stock</p>
-            <p v-else>Out of stock</p>
+            <p v-if="noStock">Out of stock</p>
+            <p v-else-if="lowStock">Almost out of stock</p>
+            <p v-else>In stock</p>
 
             <ul>
               <li v-for="element in details">
@@ -38,26 +39,28 @@
             </ul>
             
             <div 
-              v-for="element in variants" 
+              v-for="(element, index) in variants" 
               :key="element.id" 
-              @mouseover="switchImage(element.image)"
+              @mouseover="updateVariant(index)"
               class="color-circle"
               :style="{ 'backgroundColor': element.color }"
-              :title="'Show color ' + element.color">
+              :title="'Pick color ' + element.color">
             </div>
 
             <div class="btn-group">
               <button 
                 class="button" 
-                :class="{ disabledButton: inventory <= 0}"
-                :disabled="inventory <= 0"
+                :class="{ disabledButton: noStock }"
+                :disabled="noStock"
                 @click="addToCart">Add to Cart</button>
 
+                <!-- 
               <button 
                 class="button"
                 :class="{ disabledButton: cart <= 0 }"
                 :disabled="cart <= 0"
                 @click="removeFromCart">Remove from Cart</button>
+                -->
             </div>
 
             <!-- optional stuff 
@@ -86,8 +89,6 @@
           </div>
         </div>
       </div>
-      
-      <div class="cart">Inventory: {{ inventory }}</div>
 
     </div>
 
