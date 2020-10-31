@@ -29,6 +29,8 @@
             <h1>{{ title }}</h1>
             <p class="product-description">{{ description }}</p>
 
+            <div style="color: red;">{{ onSaleLabel }}!!!</div>
+
             <p v-if="noStock">Out of stock</p>
             <p v-else-if="lowStock">Almost out of stock</p>
             <p v-else>In stock</p>

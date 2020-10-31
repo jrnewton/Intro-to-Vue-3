@@ -33,7 +33,7 @@ const optionsObject = {
   }, 
   computed: {
     title: function() { 
-      return this.brand + ' ' + this.product + '!';
+      return this.brand + ' ' + this.product;
     },
 
     currentVariant: function() { 
@@ -58,8 +58,14 @@ const optionsObject = {
 
     noStock: function() { 
       return this.currentQuantity <= 0;
-    }
+    },
 
+    onSaleLabel: function() { 
+      if (this.onSale) { 
+        //change order to make English good
+        return 'Sale on ' + this.title;
+      }
+    }
   }
 };
 
