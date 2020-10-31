@@ -27,24 +27,29 @@
 
           <div class="product-info">
             <h1>{{ title }}</h1>
-            
+            <p class="product-description">{{ description }}</p>
+
             <p v-if="noStock">Out of stock</p>
             <p v-else-if="lowStock">Almost out of stock</p>
             <p v-else>In stock</p>
 
+            <label>Materials</label>
             <ul>
-              <li v-for="element in details">
+              <li v-for="element in materials">
                 {{ element }}
               </li>
             </ul>
             
-            <div 
-              v-for="(element, index) in variants" 
-              :key="element.id" 
-              @mouseover="updateVariant(index)"
-              class="color-circle"
-              :style="{ 'backgroundColor': element.color }"
-              :title="'Pick color ' + element.color">
+            <label class="mx-3">Available Colors</label>
+            <div class="btn-group">
+              <div 
+                v-for="(element, index) in variants" 
+                :key="element.id" 
+                @mouseover="updateVariant(index)"
+                class="color-circle"
+                :style="{ 'backgroundColor': element.color }"
+                :title="'Pick color ' + element.color">
+              </div>
             </div>
 
             <div class="btn-group">
@@ -53,14 +58,6 @@
                 :class="{ disabledButton: noStock }"
                 :disabled="noStock"
                 @click="addToCart">Add to Cart</button>
-
-                <!-- 
-              <button 
-                class="button"
-                :class="{ disabledButton: cart <= 0 }"
-                :disabled="cart <= 0"
-                @click="removeFromCart">Remove from Cart</button>
-                -->
             </div>
 
             <!-- optional stuff 
@@ -70,9 +67,6 @@
             </button>
 
             <div class="collapse" id="details">
-              <label>Product Description</label>
-              <p class="product-description">{{ description }}</p>
-
               <label>Sizes</label>
               <div>
                 <span v-for="element in sizes" class="mx-3">
