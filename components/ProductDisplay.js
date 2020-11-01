@@ -107,14 +107,12 @@ app.component('product-display', {
 
   methods: { 
     addToCart: function() { 
-      this.cart += 1;
-      this.currentVariant.quantity -= 1;
+      this.$emit('add-to-cart');
     }, 
 
     removeFromCart: function() { 
-      this.cart -= 1;
-      this.currentVariant.quantity += 1;
-    }, 
+      this.$emit('remove-from-card');
+    },
 
     updateVariant(index) {
       this.selectedVariant = index;

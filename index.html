@@ -16,7 +16,7 @@
       <!-- use 'premium-user' not premiumUser due to HTML attribute case mashing 
            See https://vuejs.org/v2/guide/components-props.html#Prop-Casing-camelCase-vs-kebab-case
       -->
-      <product-display :premium-user="premiumUser"></product-display>
+      <product-display :premium-user="premiumUser" @add-to-cart="addToCart" @remove-from-cart="removeFromCart"></product-display>
 
     </div>
 

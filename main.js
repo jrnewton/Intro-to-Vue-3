@@ -6,6 +6,15 @@ const optionsObject = {
       cart: 0,
       premiumUser: true
     };
+  },
+  methods: { 
+    addToCart: function() { 
+      this.cart += 1;
+    }, 
+
+    removeFromCart: function() { 
+      this.cart -= 1;
+    }, 
   }
 };
 
