@@ -13,78 +13,10 @@
 
       <div class="cart">Cart: {{ cart }}</div>
 
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <!-- you must quote the :class values because it's not camelCase -->
-            <img 
-              :src="image" 
-              :title="title + ' ' + description"
-              :class="{ 'out-of-stock-img': noStock }"
-              />
-            <div class="cart">Quantity: {{ currentQuantity }}</div>
-          </div>
-
-          <div class="product-info">
-            <h1>{{ title }}</h1>
-            <p class="product-description">{{ description }}</p>
-
-            <div style="color: red;">{{ onSaleLabel }}!!!</div>
-
-            <p v-if="noStock">Out of stock</p>
-            <p v-else-if="lowStock">Almost out of stock</p>
-            <p v-else>In stock</p>
-
-            <label>Materials</label>
-            <ul>
-              <li v-for="element in materials">
-                {{ element }}
-              </li>
-            </ul>
-            
-            <label class="mx-3">Available Colors</label>
-            <div class="btn-group">
-              <div 
-                v-for="(element, index) in variants" 
-                :key="element.id" 
-                @mouseover="updateVariant(index)"
-                class="color-circle"
-                :style="{ 'backgroundColor': element.color }"
-                :title="'Pick color ' + element.color">
-              </div>
-            </div>
-
-            <div class="btn-group">
-              <button 
-                class="button" 
-                :class="{ disabledButton: noStock }"
-                :disabled="noStock"
-                @click="addToCart">Add to Cart</button>
-            </div>
-
-            <!-- optional stuff 
-
-            <button class="button mt-3" type="button" data-toggle="collapse" data-target="#details" aria-expanded="false" aria-controls="details">
-              More Details
-            </button>
-
-            <div class="collapse" id="details">
-              <label>Sizes</label>
-              <div>
-                <span v-for="element in sizes" class="mx-3">
-                  {{ element }}
-                </span>
-              </div>
-              
-              <p v-if="onSale" class="font-style: bold">On Sale!!!</p>
-
-              <p><a :href="url">Even more details</a></p>
-            </div>
-            -->
-
-          </div>
-        </div>
-      </div>
+      <!-- use 'premium-user' not premiumUser due to HTML attribute case mashing 
+           See https://vuejs.org/v2/guide/components-props.html#Prop-Casing-camelCase-vs-kebab-case
+      -->
+      <product-display :premium-user="premiumUser"></product-display>
 
     </div>
 
@@ -95,6 +27,9 @@
 
     <!-- Import App  -->
     <script src="./main.js"></script>
+
+    <!-- Import Components -->
+    <script src="./components/ProductDisplay.js"></script>
 
     <!-- Mount App  -->
     <script>
