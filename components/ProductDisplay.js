@@ -29,11 +29,6 @@ app.component('product-display', {
         <div v-if="onSale" style="color: red;">{{ onSaleLabel }}!!!</div>
 
         <p>Availability: {{ availability }}</p>
-        <!-- 
-        <p v-if="noStock">Out of stock</p>
-        <p v-else-if="lowStock">Almost out of stock</p>
-        <p v-else>In stock</p>
-        -->
 
         <p>Shipping: {{ shipping }}</p>
         
@@ -64,26 +59,6 @@ app.component('product-display', {
             @click="addToCart">Add to Cart</button>
         </div>
 
-        <!-- optional stuff 
-
-        <button class="button mt-3" type="button" data-toggle="collapse" data-target="#details" aria-expanded="false" aria-controls="details">
-          More Details
-        </button>
-
-        <div class="collapse" id="details">
-          <label>Sizes</label>
-          <div>
-            <span v-for="element in sizes" class="mx-3">
-              {{ element }}
-            </span>
-          </div>
-          
-          <p v-if="onSale" class="font-style: bold">On Sale!!!</p>
-
-          <p><a :href="url">Even more details</a></p>
-        </div>
-        -->
-
       </div>
     </div>
   </div>`, 
@@ -109,10 +84,6 @@ app.component('product-display', {
     addToCart: function() { 
       this.$emit('add-to-cart');
     }, 
-
-    removeFromCart: function() { 
-      this.$emit('remove-from-card');
-    },
 
     updateVariant(index) {
       this.selectedVariant = index;

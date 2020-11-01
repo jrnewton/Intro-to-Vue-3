@@ -11,10 +11,6 @@ const optionsObject = {
     addToCart: function() { 
       this.cart += 1;
     }, 
-
-    removeFromCart: function() { 
-      this.cart -= 1;
-    }, 
   }
 };
 
