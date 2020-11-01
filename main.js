@@ -3,14 +3,19 @@
 const optionsObject = {
   data: function() {
     return {
-      cart: 0,
+      cart: [],
       premiumUser: true
     };
   },
   methods: { 
-    addToCart: function() { 
-      this.cart += 1;
+    addToCart: function(variant) { 
+      this.cart.push(variant.id);
     }, 
+  }, 
+  computed: { 
+    cartDetails: function() { 
+      return this.cart.length;
+    }
   }
 };
 
