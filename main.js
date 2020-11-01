@@ -1,3 +1,5 @@
+'use strict';
+
 const optionsObject = {
   data: function() {
     return {
