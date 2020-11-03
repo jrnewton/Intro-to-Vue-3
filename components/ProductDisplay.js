@@ -40,24 +40,20 @@ app.component('product-display', {
         </ul>
         
         <label class="mx-3">Available Colors</label>
-        <div class="btn-group">
-          <div 
-            v-for="(element, index) in variants" 
-            :key="element.id" 
-            @mouseover="updateVariant(index)"
-            class="color-circle"
-            :style="{ 'backgroundColor': element.color }"
-            :title="'Pick color ' + element.color">
-          </div>
+        <div 
+          v-for="(element, index) in variants" 
+          :key="element.id" 
+          @mouseover="updateVariant(index)"
+          class="color-circle"
+          :style="{ 'backgroundColor': element.color }"
+          :title="'Pick color ' + element.color">
         </div>
 
-        <div class="btn-group">
-          <button 
-            class="button" 
-            :class="{ disabledButton: noStock }"
-            :disabled="noStock"
-            @click="addToCart">Add to Cart</button>
-        </div>
+        <button 
+          class="button" 
+          :class="{ disabledButton: noStock }"
+          :disabled="noStock"
+          @click="addToCart">Add to Cart</button>
 
       </div>
     </div>
