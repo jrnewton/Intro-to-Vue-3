@@ -8,7 +8,6 @@ const optionsObject = {
     };
   },
   methods: { 
-    /* I would pass the entire object, not just ID */
     addToCart: function(id) { 
       this.cart.push(id);
     }, 
