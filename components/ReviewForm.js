@@ -5,6 +5,9 @@ app.component('review-form', {
   `
     <form class="review-form" @submit.prevent="submitReview">
       <h3>Leave a review</h3>
+      
+      <h5 :style="{ visibility: validationStyle }" >{{ validationMessage }}</h5>
+      
       <label for="name">Name:</label>
       <input id="name" v-model="name">
 
@@ -27,12 +30,18 @@ app.component('review-form', {
       return {
         name: '', 
         review: '',
-        rating: null
+        rating: null,
+        validationMessage: ''
       };
     }, 
 
     methods: { 
       submitReview: function() { 
+        if (this.name === '' || this.review === '' || this.rating === null) { 
+          this.validationMessage = 'Review is incomplete.  Please fill out every field';
+          return;
+        }
+
         let productReview = { 
           name: this.name,
           review: this.review,
@@ -44,6 +53,18 @@ app.component('review-form', {
         this.name = '';
         this.review = '';
         this.rating = null;
+        this.validationMessage = '';
+      }
+    }, 
+
+    computed: { 
+      validationStyle: function() { 
+        if (this.validationMessage==='') { 
+          return 'hidden';
+        }
+        else { 
+          return 'visible';
+        }
       }
     }
 });
