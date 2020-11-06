@@ -39,7 +39,7 @@ app.component('product-display', {
           </li>
         </ul>
         
-        <label class="mx-3">Available Colors</label>
+        <label>Available Colors</label>
         <div 
           v-for="(element, index) in variants" 
           :key="element.id" 
